@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     });
 })
 
-app.get('/productos/:id', (req, res) => {
+app.get('/productos:id', (req, res) => {
     res.send("dato");
     return;
     res.render('productos', {
