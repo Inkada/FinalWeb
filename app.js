@@ -1,28 +1,77 @@
-var express = require('express'),
-    consolidate = require('consolidate'),
-    MongoClient = require('mongodb').MongoClient;
+const express = require('express');
+const consolidate = require('consolidate');
+const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
 
-var app = express();
+const app = express();
+const url = 'mongodb://localhost:27017';
+const dbName = 'Vinos';
+
+const client = new MongoClient(url);
+var db = null;
+
+client.connect(function (err) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+     db = client.db(dbName);
+});
 
 app.engine('hbs', consolidate.handlebars);
 app.set('views', 'views');
 app.set('view engine', 'hbs');
-
 app.use("/static", express.static("directorios"))
 
+
 app.get('/', (req, res) => {
+    const collection = db.collection('productos');
+    collection.find( {}).toArray(function(err,documentos){
+        
+        if (err) {
+            console.error(err);
+            res.send(err);
+            return;
+    }
+var contexto={
+    titulo: "el titulo edit",
+    productos: documentos,
+
+};
+res.render("index",contexto);
+    
+});
+})
+/*app.get('/', (req, res) => {
     res.render('index', {
         productos: misDatos
     });
 })
-
+*/
 app.get('/productos:id', (req, res) => {
-    res.send("dato");
-    return;
-    res.render('productos', {
-        catalogo: dato
+        res.render('productos', {
+        catalogo: misDatos
     })
 })
+
+
+
+app.get('/agregarDocumento', function (request, response) {
+    const collection = db.collection('productos');
+    collection.insert({
+        nombre: "archuleta",
+        tipo: "espumoso",
+    }, function (err, resutl) {
+        if (err) {
+            console.error(err);
+            response.send(err);
+            return;
+        }
+        response.send('documento agregado');
+
+    });
+});
+
 app.listen(1234, () => {
     console.log("Escuchando en el puerto 1234")
 })
@@ -30,7 +79,7 @@ app.listen(1234, () => {
 var misDatos = [{
     id: 1,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    nombre: "vinoduchet",
+    nombre: "venome",
     imagen: "wp2.jpg",
     precio: 8000,
     añejado: 12,
@@ -39,7 +88,7 @@ var misDatos = [{
     id: 2,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoduchete",
-    imagen: "wp2.jpg",
+    imagen: "vino1.png",
     precio: 7300,
     añejado: 39,
     tipo: "Blanco",
@@ -47,7 +96,7 @@ var misDatos = [{
     id: 3,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoduchetete",
-    imagen: "wp2.jpg",
+    imagen: "vino2.png",
     precio: 80000,
     añejado: 93,
     tipo: "Blanco",
@@ -55,7 +104,7 @@ var misDatos = [{
     id: 4,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteo",
-    imagen: "wp2.jpg",
+    imagen: "vino3.png",
     precio: 80,
     añejado: 4,
     tipo: "Blanco",
@@ -63,7 +112,7 @@ var misDatos = [{
     id: 5,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteoe",
-    imagen: "wp2.jpg",
+    imagen: "vino4.png",
     precio: 19000,
     añejado: 70,
     tipo: "Blanco",
@@ -71,7 +120,7 @@ var misDatos = [{
     id: 6,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteoei",
-    imagen: "wp2.jpg",
+    imagen: "vino5.png",
     precio: 20000,
     añejado: 80,
     tipo: "Blanco",
@@ -79,7 +128,7 @@ var misDatos = [{
     id: 7,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteoeio",
-    imagen: "wp2.jpg",
+    imagen: "vino6.png",
     precio: 97000,
     añejado: 90,
     tipo: "Blanco",
@@ -87,7 +136,7 @@ var misDatos = [{
     id: 8,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteoeioi",
-    imagen: "wp2.jpg",
+    imagen: "vino7.png",
     precio: 800000,
     añejado: 100,
     tipo: "Blanco",
@@ -95,7 +144,7 @@ var misDatos = [{
     id: 9,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteteoeioio",
-    imagen: "wp2.jpg",
+    imagen: "vino8.png",
     precio: 800,
     añejado: 2,
     tipo: "Blanco",
@@ -103,7 +152,7 @@ var misDatos = [{
     id: 10,
     data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     nombre: "vinoducheteoteioie",
-    imagen: "wp2.jpg",
+    imagen: "vino9.png",
     precio: 9000,
     añejado: 19,
     tipo: "Blanco",
