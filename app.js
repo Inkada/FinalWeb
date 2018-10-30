@@ -3,6 +3,12 @@ const consolidate = require('consolidate');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 
+/*app.use( bodyParser.json() );       
+app.use(bodyParser.urlencoded({    
+  extended: true
+}));*/
+
+//app.use(express.json());
 const app = express();
 const url = 'mongodb://localhost:27017';
 const dbName = 'Vinos';
@@ -38,10 +44,56 @@ var contexto={
     productos: documentos,
 
 };
-res.render("index",contexto);
+res.render("productos",contexto);
     
 });
 })
+
+/*
+//Productos
+
+app.get('/productos', (req, res) => {
+    const collection = db.collection('productos');
+    collection.find( {}).toArray(function(err,documentos){
+        
+        if (err) {
+            console.error(err);
+            res.send(err);
+            return;
+    }
+var contexto={
+    titulo: "el titulo edit",
+    productos: documentos,
+
+};
+res.render("productos",contexto);
+    
+});
+})
+
+//Carrito De Compra
+
+app.get('/CarroDeCompras', (req, res) => {
+    const collection = db.collection('productos');
+    collection.find( {}).toArray(function(err,documentos){
+        
+        if (err) {
+            console.error(err);
+            res.send(err);
+            return;
+    }
+var contexto={
+    titulo: "el titulo edit",
+    productos: documentos,
+
+};
+res.render("carroCompra",contexto);
+    
+});
+})
+*/
+
+
 /*app.get('/', (req, res) => {
     res.render('index', {
         productos: misDatos

@@ -52,36 +52,23 @@
                 <p>Holi</p>
             </article>
         </section>
-
-        <div id="Productos">
-            
-                <div class="recomendaciones">
-                    <img src="static/files/vino2.png" alt="">
-                    <img src="static/files/vino2.png" alt="">
-                    <img src="static/files/vino2.png" alt="">
-                    <img src="static/files/vino2.png" alt="">
+ 
+ <div id="CarritoDeCompra">
+            {{#each productos}}
+            <a href="/productos/?id={{id}}">
+                <div>
+                    <img src="static/files/{{imagen}}">
+                    <p>{{nombre}}</p>
+                    <p>{{precio}}</p>
+                    
 
                 </div>
-                <div class="productoPrincipal">
-
-                    <img src="static/files/vino2.png" alt="">
-                </div>
-                <div class="datosproductoPrincipal">
-
-                    <p>Hola</p>
-                    <p>Como</p>
-                    <p>Estas</p>
-                    <button></button>
-                    <p>Espero Bien</p>
-                    <button></button>
-                
-            </div>
-
-
+            </a>
+            {{/each}}
         </div>
 
-
-
+      
+     
 
     </main>
 
