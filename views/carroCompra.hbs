@@ -52,23 +52,76 @@
                 <p>Holi</p>
             </article>
         </section>
- 
- <div id="CarritoDeCompra">
-            {{#each productos}}
-            <a href="/productos/?id={{id}}">
-                <div>
-                    <img src="static/files/{{imagen}}">
-                    <p>{{nombre}}</p>
-                    <p>{{precio}}</p>
-                    
 
+        <div id="CarritoDeCompra">
+            <div class="space1"></div>
+            <div class="bolsaDeCompra">
+
+                <div class="soloBorder">
+                    <div class="imagen--soloBorder">
+                        <img src="static/files/wp3.png" alt="">
+                    </div>   
+                       <div class="Info-Button--soloBorder"> <p>Nombre producto</p>
+                        <Button>Remover</Button>
+                    </div>
+
+                    <div>
+                        <div class="input-group plus-minus-input">
+                            <div class="input-group-button">
+
+                                </button>
+                            </div>
+                            <input class="input-group-field" type="number" name="quantity" value="0">
+                            <div class="input-group-button">
+
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </a>
-            {{/each}}
+
+
+
+            </div>
+            <div class="resumen">
+                <p>Resumen Del Pedido</p>
+                <div class="soloBorde">
+                    <input type="text" placeholder="¿Tienes Un Código Promocional?">
+                </div>
+                <p>Ciudad:{{Ciudad}}</p>
+
+                <div class="soloBorde">
+                    <select name="" id="">
+                        <option value="nulo">Estandar</option>
+                        <option value="b">Premium</option>
+                    </select>
+                </div>
+
+                <div class="online">
+                    <p class="s">Subtotal</p>
+                    <p class="e">{{Subtotal}}00</p>
+                </div>
+                <div class="online">
+                    <p class="s">Envio</p>
+                    <p class="e">{{Envio}}00</p>
+                </div>
+                <div class="online">
+                    <p class="s">Total</p>
+                    <p class="e">{{Total}}00</p>
+                </div>
+
+                <div class="soloBorde">
+                    <button>Pagar</button>
+                </div>
+            </div>
+            <div class="space2"></div>
+
+        </div>
         </div>
 
-      
-     
+
+
 
     </main>
 

@@ -44,7 +44,7 @@ var contexto={
     productos: documentos,
 
 };
-res.render("productos",contexto);
+res.render("carroCompra",contexto);
     
 });
 })

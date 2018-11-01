@@ -227,8 +227,8 @@ main {
 
 main {
     #Productos {
-color: black;
-font-family: $Font;
+        color: black;
+        font-family: $Font;
 
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -252,7 +252,7 @@ font-family: $Font;
         }
 
         .productoPrincipal {
-            
+
             img {
                 height: 100%;
             }
@@ -266,35 +266,128 @@ font-family: $Font;
             align-content: flex-start;
             align-items: flex-start;
 
-          
-p.Tit{
-    font-size: 30px;
-}
+
+            button.compra {
+                width: 200px;
+                height: 30px;
+                background-color: $Beige2;
+                border: none;
+                font-size: 8pt;
+                letter-spacing: 2px;
+                color: white;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+
+
+            button.compra:hover {
+                background-color: $Beige;
+                color: black;
+                color: green;
+            }
+
+
+            p.Tit {
+                font-size: 30px;
+            }
         }
+
+
     }
 }
+
+
+div.soloBorde{border:$Beige2;
+    border-style: solid;
+    border-width: thin;}
 
 main {
     #CarritoDeCompra {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
-        text-align: center;
-        padding: 8px;
+        display: flex;
+        flex-direction: row;
 
-        div {
-            position: relative;
+        .space1 {
+            width: 10%;
+            height: 400px;
+        }
 
-            p {
-                margin-bottom: 0px;
-                margin-top: 2px;
-                font-size: 9pt;
+        .bolsaDeCompra {
+            margin: 5px;
+            width: 50%;
+            height: 400px;
+
+div.imagen--soloBorder{
+    width: 50%;
+}
+div.Info-Button--soloBorder{
+    width: 20%;
+}
+
+button{
+    
+}
+
+            div.soloBorder{border:$Beige2;
+                border-style: solid;
+                border-width: thin;
+            display: flex;
+            flex-direction: row;
+            
             }
 
-            img {
-                z-index: -0px;
-                width: 80%;
+            img{
+                margin-top: 20px;
+                height: 50%;
             }
         }
+
+        .resumen {
+            margin: 5px;
+            width: 30%;
+            height: 400px;
+
+
+
+            p {
+                border:$Beige2;
+                border-style: solid;
+                border-width: thin;
+            }
+            
+
+            div.online {
+                display: flex;
+                flex-direction: row;
+                border:$Beige2;
+                border-style: solid;
+                border-width: thin;
+
+                p.s {justify-content: flex-start;
+                width: 50%;
+            border: none;}
+
+                p.e {justify-content: flex-end
+                ; width: 50%;
+            border: none;}
+            }
+
+
+
+        }
+
+        .space2 {
+            width: 10%;
+            height: 400px;
+        }
     }
+}
+
+.input-group-field{
+    width: 50px;
+margin-top: 20px;
 }

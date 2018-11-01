@@ -221,6 +221,8 @@ main #items div img {
 }
 
 main #Productos {
+  color: black;
+  font-family: "Nunito", sans-serif;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -251,43 +253,162 @@ main #Productos .recomendaciones img {
   height: 60px;
 }
 
-main #Productos div {
-  position: relative;
+main #Productos .productoPrincipal img {
+  height: 100%;
 }
 
-main #Productos div p {
-  margin-bottom: 0px;
-  margin-top: 2px;
-  font-size: 9pt;
+main #Productos .datosproductoPrincipal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-main #Productos div img {
-  z-index: -0px;
-  width: 80%;
+main #Productos .datosproductoPrincipal button.compra {
+  width: 200px;
+  height: 30px;
+  background-color: #BFA676;
+  border: none;
+  font-size: 8pt;
+  letter-spacing: 2px;
+  color: white;
+}
+
+main #Productos .datosproductoPrincipal .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main #Productos .datosproductoPrincipal button.compra:hover {
+  background-color: #F8F5F2;
+  color: black;
+  color: green;
+}
+
+main #Productos .datosproductoPrincipal p.Tit {
+  font-size: 30px;
+}
+
+div.soloBorde {
+  border: #BFA676;
+  border-style: solid;
+  border-width: thin;
 }
 
 main #CarritoDeCompra {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  text-align: center;
-  padding: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-main #CarritoDeCompra div {
-  position: relative;
+main #CarritoDeCompra .space1 {
+  width: 10%;
+  height: 400px;
 }
 
-main #CarritoDeCompra div p {
-  margin-bottom: 0px;
-  margin-top: 2px;
-  font-size: 9pt;
+main #CarritoDeCompra .bolsaDeCompra {
+  margin: 5px;
+  width: 50%;
+  height: 400px;
 }
 
-main #CarritoDeCompra div img {
-  z-index: -0px;
-  width: 80%;
+main #CarritoDeCompra .bolsaDeCompra div.imagen--soloBorder {
+  width: 50%;
+}
+
+main #CarritoDeCompra .bolsaDeCompra div.Info-Button--soloBorder {
+  width: 20%;
+}
+
+main #CarritoDeCompra .bolsaDeCompra div.soloBorder {
+  border: #BFA676;
+  border-style: solid;
+  border-width: thin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+main #CarritoDeCompra .bolsaDeCompra img {
+  margin-top: 20px;
+  height: 50%;
+}
+
+main #CarritoDeCompra .resumen {
+  margin: 5px;
+  width: 30%;
+  height: 400px;
+}
+
+main #CarritoDeCompra .resumen p {
+  border: #BFA676;
+  border-style: solid;
+  border-width: thin;
+}
+
+main #CarritoDeCompra .resumen div.online {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: #BFA676;
+  border-style: solid;
+  border-width: thin;
+}
+
+main #CarritoDeCompra .resumen div.online p.s {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 50%;
+  border: none;
+}
+
+main #CarritoDeCompra .resumen div.online p.e {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 50%;
+  border: none;
+}
+
+main #CarritoDeCompra .space2 {
+  width: 10%;
+  height: 400px;
+}
+
+.input-group-field {
+  width: 50px;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=style.css.map */
