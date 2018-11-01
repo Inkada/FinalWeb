@@ -36,6 +36,7 @@ section {
 
 }
 
+
 .shoppingCart article.cart img {
     margin-top: 40px;
     width: 4vh;
@@ -50,6 +51,10 @@ section {
 .shoppingCart article.cart {
     height: 100%;
     width: 20%;
+
+    input{
+        background-color: black;
+    }
 }
 
 
@@ -302,9 +307,11 @@ main {
 }
 
 
-div.soloBorde{border:$Beige2;
+div.soloBorde {
+    border: $Beige2;
     border-style: solid;
-    border-width: thin;}
+    border-width: thin;
+}
 
 main {
     #CarritoDeCompra {
@@ -321,26 +328,26 @@ main {
             width: 50%;
             height: 400px;
 
-div.imagen--soloBorder{
-    width: 50%;
-}
-div.Info-Button--soloBorder{
-    width: 20%;
-}
-
-button{
-    
-}
-
-            div.soloBorder{border:$Beige2;
-                border-style: solid;
-                border-width: thin;
-            display: flex;
-            flex-direction: row;
-            
+            div.imagen--soloBorder {
+                width: 50%;
             }
 
-            img{
+            div.Info-Button--soloBorder {
+                width: 20%;
+            }
+
+          
+
+            div.soloBorder {
+                border: $Beige2;
+                border-style: solid;
+                border-width: thin;
+                display: flex;
+                flex-direction: row;
+
+            }
+
+            img {
                 margin-top: 20px;
                 height: 50%;
             }
@@ -354,26 +361,31 @@ button{
 
 
             p {
-                border:$Beige2;
+                border: $Beige2;
                 border-style: solid;
                 border-width: thin;
             }
-            
+
 
             div.online {
                 display: flex;
                 flex-direction: row;
-                border:$Beige2;
+                border: $Beige2;
                 border-style: solid;
                 border-width: thin;
 
-                p.s {justify-content: flex-start;
-                width: 50%;
-            border: none;}
+                p.s {
+                    padding-left: 14px;
+                    justify-content: flex-start;
+                    width: 50%;
+                    border: none;
+                }
 
-                p.e {justify-content: flex-end
-                ; width: 50%;
-            border: none;}
+                p.e {
+                    padding-left: 140px;
+                    width: 50%;
+                    border: none;
+                }
             }
 
 
@@ -387,7 +399,8 @@ button{
     }
 }
 
-.input-group-field{
+.input-group-field {
     width: 50px;
-margin-top: 20px;
+    margin-top: 20px;
 }
+

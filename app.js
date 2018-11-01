@@ -3,15 +3,21 @@ const consolidate = require('consolidate');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 
-/*app.use( bodyParser.json() );       
-app.use(bodyParser.urlencoded({    
-  extended: true
-}));*/
-
-//app.use(express.json());
 const app = express();
 const url = 'mongodb://localhost:27017';
 const dbName = 'Vinos';
+
+app.engine('hbs', consolidate.handlebars);
+app.set('views', 'views/');
+app.set('view engine', 'hbs');
+app.use("/static", express.static("directorios"))
+
+
+app.use( bodyParser.json() );       
+app.use(bodyParser.urlencoded({    
+  extended: false
+}));
+app.use(express.json());
 
 const client = new MongoClient(url);
 var db = null;
@@ -24,12 +30,6 @@ client.connect(function (err) {
      db = client.db(dbName);
 });
 
-app.engine('hbs', consolidate.handlebars);
-app.set('views', 'views');
-app.set('view engine', 'hbs');
-app.use("/static", express.static("directorios"))
-
-
 app.get('/', (req, res) => {
     const collection = db.collection('productos');
     collection.find( {}).toArray(function(err,documentos){
@@ -40,19 +40,39 @@ app.get('/', (req, res) => {
             return;
     }
 var contexto={
-    titulo: "el titulo edit",
+            productos: documentos,
+
+};
+res.render("index",contexto);
+    
+});
+})
+
+
+//Productos
+
+app.get('/productos/?id={{id}}', (req, res) => {
+    const collection = db.collection('productos');
+    collection.find( {}).toArray(function(err,documentos){
+        
+        if (err) {
+            console.error(err);
+            res.send(err);
+            return;
+    }
+var contexto={
+    title: "Sanchez Carrillo Wine",
+    cantidad: "3",
     productos: documentos,
 
 };
-res.render("carroCompra",contexto);
+res.render("productos",contexto);
     
 });
 })
 
 /*
-//Productos
-
-app.get('/productos', (req, res) => {
+app.get('/productos/?id={{id}}', (req, res) => {
     const collection = db.collection('productos');
     collection.find( {}).toArray(function(err,documentos){
         
@@ -70,10 +90,11 @@ res.render("productos",contexto);
     
 });
 })
+*/
 
 //Carrito De Compra
 
-app.get('/CarroDeCompras', (req, res) => {
+app.get('/carroCompra', (req, res) => {
     const collection = db.collection('productos');
     collection.find( {}).toArray(function(err,documentos){
         
@@ -83,15 +104,15 @@ app.get('/CarroDeCompras', (req, res) => {
             return;
     }
 var contexto={
+
     titulo: "el titulo edit",
     productos: documentos,
 
 };
 res.render("carroCompra",contexto);
-    
 });
 })
-*/
+
 
 
 /*app.get('/', (req, res) => {
