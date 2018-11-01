@@ -16,99 +16,101 @@ app.use("/static", express.static("directorios"))
 
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-app.use( bodyParser.json() );       
-app.use(bodyParser.urlencoded({    
-  extended: false
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
 }));
 app.use(express.json());
 
-//const client = new MongoClient(url);
+const client = new MongoClient(url);
 var db = null;
 
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-/*
+
 client.connect(function (err) {
     if (err) {
         console.error(err);
         return;
     }
-     db = client.db(dbName);
+    db = client.db(dbName);
 });
 
-*/
+
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-
-/*
 app.get('/', (req, res) => {
-    const collection = db.collection('productos');
-    collection.find( {}).toArray(function(err,documentos){
-        
+    const collection = db.collection('productos').find({});
+
+    if (req.query.tipo) {
+        collection.filter({
+            //tipo: "Blanco"
+            tipo: req.query.tipo
+        })
+    }
+
+    collection.toArray(function (err, documentos) {
+
         if (err) {
             console.error(err);
             res.send(err);
             return;
-    }
-var contexto={
+        }
+
+
+        var contexto = {
             productos: documentos,
 
-};
-res.render("index",contexto);
-    
-});
+        };
+        res.render("index", contexto);
+
+    });
 })
 
 
 //Productos
+app.get('/productos/:id/', (req, res)=> {
 
-app.get('/productos/?id={{id}}', (req, res) => {
-    const collection = db.collection('productos');
-    collection.find( {}).toArray(function(err,documentos){
-        
-        if (err) {
-            console.error(err);
-            res.send(err);
-            return;
-    }
-var contexto={
-    title: "Sanchez Carrillo Wine",
-    cantidad: "3",
-    productos: documentos,
-
-};
-res.render("productos",contexto);
-    
-});
-})
+    db.collection('productos').find (
+        {        
+            id: parseInt(req.params.id)
+        }
+    ).toArray((err, result) => {
+        console.log(result);
+        res.render('productos', {
+            producto: result
+        });
+    });
+}
+);
 
 
 //Carrito De Compra
 
 app.get('/carroCompra', (req, res) => {
     const collection = db.collection('productos');
-    collection.find( {}).toArray(function(err,documentos){
-        
+    collection.find({}).toArray(function (err, documentos) {
+
         if (err) {
             console.error(err);
             res.send(err);
             return;
-    }
-var contexto={
+        }
+        var contexto = {
 
-    titulo: "el titulo edit",
-    productos: documentos,
+            titulo: "el titulo edit",
+            productos: documentos,
 
-};
-res.render("carroCompra",contexto);
-});
+        };
+        res.render("carroCompra", contexto);
+    });
 })
-*/
+
 
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-
+/*
 app.get('/', (req, res) => {
     res.render('index', {
         productos: misDatos
@@ -127,7 +129,7 @@ app.get('/carroCompra', (req, res) => {
     catalogo: misDatos
 })
 })
-
+*/
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
@@ -147,7 +149,27 @@ app.get('/agregarDocumento', function (request, response) {
     });
 });
 
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
+
+app.get('/obtenerObjectID', (req, res)=> {
+    var arreglo = req.query.ids.split(',');
+
+    arreglo = arreglo.map (function(id){
+        return new ObjectID(id);
+    }) ;
+    var plays = db.collection('plays').find (
+        {
+            _id: {
+                $in: arreglo
+            }
+        }
+    ).toArray((err, result) => {
+        res.send(result);
+    });
+})
+
+//
 
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 

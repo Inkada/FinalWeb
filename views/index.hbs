@@ -7,7 +7,6 @@
     <title>Sanchez Carrillo Wines</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css" />
-    <script src="main.js"></script>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             <article class="nothing"></article>
             <article class="cart">
                 <input type="button" value="" onclick="window.location.href='/carroCompra'">
-                                                  </input>
+                </input>
 
 
             </article>
@@ -37,11 +36,12 @@
 
             <article class="catalogue">
                 <select id="limits">
+
                     <option value="nulo">Ninguno</option>
-                    <option value="b">Blancos</option>
-                    <option value="tyr">Tintos y rosados</option>
-                    <option value="e">Espumosos</option>
-                    <option value="dye">Dulces y especiales</option>
+                    <option value="Blanco">Blancos</option>
+                    <option value="Tintosyrosados">Tintos y rosados</option>
+                    <option value="Espumosos">Espumosos</option>
+                    <option value="Dulcesyespeciales">Dulces y especiales</option>
                 </select>
             </article>
 
@@ -59,14 +59,19 @@
 
         <div id="items">
             {{#each productos}}
-            <a href="/productos/?id={{id}}">
-                <div>
-                    <img src="static/files/{{imagen}}">
-                    <p>{{nombre}}</p>
-                    <p>{{precio}}</p>
-                    <p>{{tipo}}</p>
 
+            <div>
+                <div>
+                    <a href="/productos/{{id}}">
+                        <img src="static/files/{{imagen}}">
+                    </a>
+
+                    <button class="carritu">Add</button>
                 </div>
+                <a href="/productos/{{id}}"><p>{{nombre}}</p></a>
+                <a href="/productos/{{id}}"></a><p>{{precio}}</p></a>
+               <a href="/productos/{{id}}"></a> <p>{{tipo}}</p></a>
+            </div>
             </a>
             {{/each}}
         </div>
@@ -133,6 +138,9 @@
 
     </footer>
 
+    <script src="/static/js/filter.js"></script>
+    <script src="/static/js/anadirCarrito.js"></script>
+        <script src="/static/js/actualizar.js"></script>
 </body>
 
 </html>

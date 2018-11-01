@@ -40,42 +40,48 @@
                 <img src="/static/files/vino6.png" alt="">
 
             </div>
+
+            {{#each producto}}
             <div class="productoPrincipal">
 
                 <img src="/static/files/{{imagen}}">
             </div>
+
+
             <div class="datosproductoPrincipal">
 
                 <p class="Tit">{{nombre}}</p>
 
-                <p class="Norm">{{data}}</p>
+                <p class="Norm">Características:{{data}}</p>
 
-                <p class="Norm">{{añejado}}</p>
+                <p class="Norm">Añejado:{{añejado}}</p>
 
-                <p class="Norm">{{precio}}</p>
+                <p class="Norm">Tipo:{{tipo}}</p>
 
-                <p class="Norm">{{tipo}}</p>
+                <div class="row">
+                    <p class="Cantidad">Cantidad{{cantidad}}</p>
 
-                <p class="Norm">Cantidad{{cantidad}}</p>
-
-                <div class="input-group plus-minus-input">
-                    <div class="input-group-button">
+                    <div class="input-group plus-minus-input">
+                        <div class="input-group-button">
                             <i class="fa fa-minus" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <input class="input-group-field" type="number" name="quantity" value="0">
-                    <div class="input-group-button">
+                            </button>
+                        </div>
+                        <input class="input-group-field" type="number" name="quantity" value="0">
+                        <div class="input-group-button">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <p class="Tit">Precio</p>
+                <p class="Tit">{{precio}}$</p>
 
                 <div>
                     <button class="compra">Agregar a la bolsa</button>
                 </div>
             </div>
+
+            {{/each}}
         </div>
     </main>
 

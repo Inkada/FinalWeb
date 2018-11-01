@@ -12,6 +12,7 @@
 
 <body>
     <header>
+          {{#each productos}}
         <section class="shoppingCart">
 
             <article class="logo">
@@ -30,8 +31,9 @@
     </header>
 
     <main>
-
+       
         <div id="CarritoDeCompra">
+           
             <div class="space1"></div>
             <div class="bolsaDeCompra">
 
@@ -41,7 +43,7 @@
                     </div>
                     <div class="Info-Button--soloBorder">
                         <p>Nombre producto</p>
-                        <Button>Remover</Button>
+                        <button class="removee">Remover</button>
                     </div>
 
                     <div>
@@ -61,8 +63,9 @@
                 </div>
 
 
-
             </div>
+
+
             <div class="resumen">
                 <p>Resumen Del Pedido</p>
                 <div class="soloBorde">
@@ -91,7 +94,7 @@
                 </div>
 
                 <div class="soloBorde">
-                    <button>Pagar</button>
+                    <button class="Bb" >Pagar</button>
                 </div>
             </div>
             <div class="space2"></div>
@@ -99,7 +102,7 @@
         </div>
 
 
-
+                {{/each}}
 
     </main>
 
@@ -162,6 +165,8 @@
 
 
     </footer>
+
+    <script src="/static/js/remove.js"></script>
 
 </body>
 
