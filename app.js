@@ -7,11 +7,14 @@ const app = express();
 const url = 'mongodb://localhost:27017';
 const dbName = 'Vinos';
 
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 app.engine('hbs', consolidate.handlebars);
 app.set('views', 'views/');
 app.set('view engine', 'hbs');
 app.use("/static", express.static("directorios"))
 
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 app.use( bodyParser.json() );       
 app.use(bodyParser.urlencoded({    
@@ -19,9 +22,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-const client = new MongoClient(url);
+//const client = new MongoClient(url);
 var db = null;
 
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+/*
 client.connect(function (err) {
     if (err) {
         console.error(err);
@@ -30,6 +36,12 @@ client.connect(function (err) {
      db = client.db(dbName);
 });
 
+*/
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+/*
 app.get('/', (req, res) => {
     const collection = db.collection('productos');
     collection.find( {}).toArray(function(err,documentos){
@@ -71,26 +83,6 @@ res.render("productos",contexto);
 });
 })
 
-/*
-app.get('/productos/?id={{id}}', (req, res) => {
-    const collection = db.collection('productos');
-    collection.find( {}).toArray(function(err,documentos){
-        
-        if (err) {
-            console.error(err);
-            res.send(err);
-            return;
-    }
-var contexto={
-    titulo: "el titulo edit",
-    productos: documentos,
-
-};
-res.render("productos",contexto);
-    
-});
-})
-*/
 
 //Carrito De Compra
 
@@ -112,21 +104,31 @@ var contexto={
 res.render("carroCompra",contexto);
 });
 })
+*/
+
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-
-/*app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', {
         productos: misDatos
     });
 })
-*/
-app.get('/productos:id', (req, res) => {
+
+
+app.get('/productos', (req, res) => {
         res.render('productos', {
-        catalogo: misDatos
+            productos: misDatos
     })
 })
 
+app.get('/carroCompra', (req, res) => {
+    res.render('carroCompra', {
+    catalogo: misDatos
+})
+})
+
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 app.get('/agregarDocumento', function (request, response) {
@@ -145,9 +147,16 @@ app.get('/agregarDocumento', function (request, response) {
     });
 });
 
+
+
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 app.listen(1234, () => {
     console.log("Escuchando en el puerto 1234")
 })
+
+
+//<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 var misDatos = [{
     id: 1,

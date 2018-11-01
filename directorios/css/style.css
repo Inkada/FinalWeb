@@ -1,24 +1,3 @@
-#main-header {
-  position: relative;
-  overflow: hidden;
-}
-
-#main-header:before {
-  content: '';
-  position: absolute;
-  background-image: url(https://www.highreshdwallpapers.com/wp-content/uploads/2013/02/Sauron.jpg);
-  background-size: 100%;
-  background-position: center;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  -webkit-filter: blur(4px);
-          filter: blur(4px);
-  -webkit-transition: all .4s .1s ease;
-  transition: all .4s .1s ease;
-}
-
 body {
   padding: 0;
   margin: 0;
@@ -64,6 +43,10 @@ section {
 .shoppingCart article.cart {
   height: 100%;
   width: 20%;
+}
+
+.shoppingCart article.cart input {
+  background-color: black;
 }
 
 .photo {
@@ -242,6 +225,8 @@ main #items div img {
 }
 
 main #Productos {
+  margin-top: 100px;
+  margin-bottom: 100px;
   color: black;
   font-family: "Nunito", sans-serif;
   display: -ms-grid;
@@ -343,6 +328,8 @@ main #CarritoDeCompra {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 main #CarritoDeCompra .space1 {
@@ -365,6 +352,7 @@ main #CarritoDeCompra .bolsaDeCompra div.Info-Button--soloBorder {
 }
 
 main #CarritoDeCompra .bolsaDeCompra div.soloBorder {
+  height: 100px;
   border: #BFA676;
   border-style: solid;
   border-width: thin;
@@ -378,8 +366,9 @@ main #CarritoDeCompra .bolsaDeCompra div.soloBorder {
 }
 
 main #CarritoDeCompra .bolsaDeCompra img {
+  margin-left: 20px;
   margin-top: 20px;
-  height: 50%;
+  height: 70%;
 }
 
 main #CarritoDeCompra .resumen {
@@ -389,6 +378,7 @@ main #CarritoDeCompra .resumen {
 }
 
 main #CarritoDeCompra .resumen p {
+  margin: 0px;
   border: #BFA676;
   border-style: solid;
   border-width: thin;

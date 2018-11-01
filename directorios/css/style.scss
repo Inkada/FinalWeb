@@ -52,7 +52,7 @@ section {
     height: 100%;
     width: 20%;
 
-    input{
+    input {
         background-color: black;
     }
 }
@@ -232,9 +232,10 @@ main {
 
 main {
     #Productos {
+        margin-top: 100px;
+        margin-bottom: 100px;
         color: black;
         font-family: $Font;
-
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 10px;
@@ -317,7 +318,8 @@ main {
     #CarritoDeCompra {
         display: flex;
         flex-direction: row;
-
+        margin-top: 100px;
+        margin-bottom: 100px;
         .space1 {
             width: 10%;
             height: 400px;
@@ -336,9 +338,10 @@ main {
                 width: 20%;
             }
 
-          
+
 
             div.soloBorder {
+                height: 100px;
                 border: $Beige2;
                 border-style: solid;
                 border-width: thin;
@@ -348,8 +351,9 @@ main {
             }
 
             img {
+                margin-left:20px ;
                 margin-top: 20px;
-                height: 50%;
+                height: 70%;
             }
         }
 
@@ -361,6 +365,7 @@ main {
 
 
             p {
+                margin: 0px;
                 border: $Beige2;
                 border-style: solid;
                 border-width: thin;
@@ -403,4 +408,3 @@ main {
     width: 50px;
     margin-top: 20px;
 }
-
