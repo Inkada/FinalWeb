@@ -32,14 +32,14 @@ section {
 .shoppingCart article.logo img {
     margin-left: 20vh;
     margin-top: 20px;
-    width: 15vh;
+    height: 60%;
 
 }
 
 
 .shoppingCart article.cart img {
     margin-top: 40px;
-    width: 4vh;
+    height: 30%;
     padding-left: 60px;
 }
 
@@ -53,7 +53,15 @@ section {
     width: 20%;
 
     input {
-        background-color: black;
+        color: inherit;
+        background: url("/static/files/wp4-2.png");
+        background-size: 100px;
+        margin-top:10px;
+        height: 80%;
+        width: 100px;
+        img{
+            height: 20px;
+        }
     }
 }
 
@@ -212,6 +220,11 @@ main {
         grid-gap: 10px;
         text-align: center;
         padding: 8px;
+
+        a{
+            color:inherit;
+            text-decoration:none; 
+        }
 
         div {
             position: relative;
