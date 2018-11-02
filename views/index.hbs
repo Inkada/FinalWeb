@@ -59,18 +59,24 @@
 
         <div id="items">
             {{#each productos}}
-
             <div>
                 <div>
                     <a href="/productos/{{id}}">
                         <img src="static/files/{{imagen}}">
                     </a>
 
-                    <button class="carritu">Add</button>
+                    <button class="carritu" data-name={{nombre}}>Add</button>
+
                 </div>
-                <a href="/productos/{{id}}"><p>{{nombre}}</p></a>
-                <a href="/productos/{{id}}"></a><p>{{precio}}</p></a>
-               <a href="/productos/{{id}}"></a> <p>{{tipo}}</p></a>
+                <a href="/productos/{{id}}">
+                    <p>{{nombre}}</p>
+                </a>
+                <a href="/productos/{{id}}"></a>
+                <p>{{precio}}</p>
+                </a>
+                <a href="/productos/{{id}}"></a>
+                <p>{{tipo}}</p>
+                </a>
             </div>
             </a>
             {{/each}}
@@ -140,7 +146,10 @@
 
     <script src="/static/js/filter.js"></script>
     <script src="/static/js/anadirCarrito.js"></script>
-        <script src="/static/js/actualizar.js"></script>
+    <script src="/static/js/actualizar.js"></script>
+    <script src="/static/js/tags.js"></script>
+    <script src="/static/js/eliminarTags.js"></script>
+
 </body>
 
 </html>

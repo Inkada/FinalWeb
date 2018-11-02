@@ -107,6 +107,20 @@ app.get('/carroCompra', (req, res) => {
     });
 })
 
+//otroGet
+
+app.get('/agregarCarro', (req,res)=>{
+    var nombre = req.query.nombre;
+    console.log(nombre);
+    const collection = db.collection('productos');
+    collection.find({}).toArray(function (err, documentos) {
+        var producto = documentos.find(function(element){
+            return element.nombre == nombre;
+        });
+        res.json(producto);
+    });
+})
+
 
 //<------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 

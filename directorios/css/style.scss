@@ -99,9 +99,13 @@ section {
 }
 
 article.tags {
+    display: flex;
     height: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    p{
+        margin-left: 20px;
+    }
 }
 
 select#limits {

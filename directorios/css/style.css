@@ -88,6 +88,9 @@ section {
 }
 
 article.tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   height: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -95,6 +98,10 @@ article.tags {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+article.tags p {
+  margin-left: 20px;
 }
 
 select#limits {
