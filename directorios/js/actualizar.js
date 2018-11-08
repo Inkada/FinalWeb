@@ -1,11 +1,41 @@
-function actualizarCarrito (){
-    //alert(arreglo);
+var container = document.querySelector ('.bolsaDeCompra');
 
-    //Visualmente el cosito carrito lo transforma en el tamaño del arreglo, osea cuantos elementos hay
-    document.querySelector('.carrito').innerHTML = arreglo.length;
-}
+window.addEventListener('load', function () {
+    var compras = JSON.parse(localStorage.getItem('compras'));
 
-var arreglo = JSON.parse(localStorage.getItem('arreglo'));
-if(arreglo == null) arreglo = [];
+    if (compras != null) {
+        compras.forEach(element => {
+            var soloBorder = document.createElement("div");
+            soloBorder.className = "soloBorder";
+            soloBorder.innerHTML = `
+            <div class="soloBorder">
+            <div class="imagen--soloBorder">
+                <img src="/static/files/` + element.imagen + `" alt="">
+            </div>
+            <div class="Info-Button--soloBorder">
+                <p>` + element.nombre + `</p>
+                <button class="removee">Remover</button>
+            </div>
+    
+            <div>
+                <div class="input-group plus-minus-input">
+                    <div class="input-group-button">
+    
+                        </button>
+                    </div>
+                    <input class="input-group-field" type="number" name="quantity" value="0">
+                    <div class="input-group-button">
+    
+                        </button>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        `
+        container.appendChild(soloBorder);
+        });
+    }
+    
+});
 
-actualizarCarrito();
